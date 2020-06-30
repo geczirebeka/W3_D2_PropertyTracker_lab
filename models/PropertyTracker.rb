@@ -67,6 +67,7 @@ class PropertyTracker
         result = db.exec_prepared("find_by_address", value)[0]
         db.close()
         return self.new(result)
+        return nil if result == nil
     end
 
 end
