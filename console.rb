@@ -1,4 +1,7 @@
+require('pry')
 require_relative('models/PropertyTracker')
+
+PropertyTracker.delete_all()
 
 property1 = PropertyTracker.new({'address' => '123 sesame street', 'value' => 1000000, 'number_of_bedrooms' => 10, 'build' => 'house'})
 property1.save()
@@ -6,4 +9,8 @@ property2 = PropertyTracker.new({'address' => '10 dundas street', 'value' => 300
 property2.save()
 property1.value = 3000000
 property1.update
-property2.delete()
+# property2.delete()
+find = PropertyTracker.find_by_id(property2.id)
+
+binding.pry
+nil

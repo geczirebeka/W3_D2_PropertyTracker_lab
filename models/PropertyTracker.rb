@@ -41,7 +41,22 @@ class PropertyTracker
         db.close()
     end
 
+    def self.delete_all()
+        db = PG.connect ({dbname: 'property_tracker', host: 'localhost' })
+        sql = "DELETE FROM property_tracker"
+        db.prepare("delete_all", sql)
+        db.exec_prepared("delete_all")
+        db.close()
+    end
 
-
+    def self.find_by_id(id)
+        db = PG.connect ({dbname: 'property_tracker', host: 'localhost' })
+        sql = "SELECT * FROM property_tracker WHERE id = $1"
+        value = [id]
+        db.prepare("find_by_id", sql)
+        result = db.exec_prepared("find_by_id", value)[0]
+        db.close()
+        return self.new(result)
+    end
 
 end
