@@ -32,5 +32,16 @@ class PropertyTracker
         db.close()
     end
 
+    def delete()
+        db = PG.connect ({dbname: 'property_tracker', host: 'localhost' })
+        sql = "DELETE FROM property_tracker WHERE id = $1"
+        value = [@id]
+        db.prepare("delete", sql)
+        db.exec_prepared("delete", value)
+        db.close()
+    end
+
+
+
 
 end
