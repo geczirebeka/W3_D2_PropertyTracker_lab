@@ -11,6 +11,7 @@ property1.value = 3000000
 property1.update
 # property2.delete()
 find = PropertyTracker.find_by_id(property2.id)
+find_address = PropertyTracker.find_by_address(property2.address)
 
 binding.pry
 nil
